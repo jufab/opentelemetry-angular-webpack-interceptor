@@ -1,5 +1,5 @@
 {
-  "name": "opentelemetry-interceptor-webpack",
+  "name": "@jufab/opentelemetry-angular-webpack-interceptor",
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/common": "^10.0.6",
