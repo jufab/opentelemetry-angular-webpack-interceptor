@@ -6,5 +6,12 @@
 */
 {
   "files": [],
-  "references": []
+  "references": [
+    {
+      "path": "./projects/opentelemetry-interceptor-webpack/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/opentelemetry-interceptor-webpack/tsconfig.spec.json"
+    }
+]
 }
