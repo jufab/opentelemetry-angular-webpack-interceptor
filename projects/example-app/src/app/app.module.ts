@@ -25,10 +25,11 @@ import { ZipkinExporterModule, OpentelemetryInterceptorWebpackModule } from 'pro
     BrowserModule,
     // Insert module OpenTelemetryInterceptorModule with configuration, HttpClientModule is used for interceptor
     OpenTelemetryInterceptorModule.forRoot(environment.openTelemetryConfig),
+    // Extra configuration for OpentelemetryInterceptorWebpackModule
     OpentelemetryInterceptorWebpackModule.forRoot(environment.openTelemetryWebpackConfig),
     // Propagator
     CompositePropagatorModule,
-    // Zipkin
+    // Zipkin exporter
     ZipkinExporterModule,
     HttpClientModule,
     HttpClientJsonpModule,

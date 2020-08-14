@@ -60,6 +60,13 @@
             <code>projects/opentelemetry-interceptor-webpack/src/lib/services/exporter/zipkin/zipkin-exporter.service.ts</code>
         </p>
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>ZipkinExporterService class</p>
+
+            </p>
 
 
 
@@ -117,7 +124,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">projects/opentelemetry-interceptor-webpack/src/lib/services/exporter/zipkin/zipkin-exporter.service.ts:13</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">projects/opentelemetry-interceptor-webpack/src/lib/services/exporter/zipkin/zipkin-exporter.service.ts:19</a></div>
                             </td>
                         </tr>
 
@@ -205,15 +212,15 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="32"
-                            class="link-to-prism">projects/opentelemetry-interceptor-webpack/src/lib/services/exporter/zipkin/zipkin-exporter.service.ts:32</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="38"
+                            class="link-to-prism">projects/opentelemetry-interceptor-webpack/src/lib/services/exporter/zipkin/zipkin-exporter.service.ts:38</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-description"><p>Return for the moment a ConsoleSpanExporter</p>
+                    <div class="io-description"><p>Return a ZipkinExporter configured with zipkinConfig field</p>
 </div>
 
                     <div>
@@ -257,10 +264,16 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">projects/opentelemetry-interceptor-webpack/src/lib/services/exporter/zipkin/zipkin-exporter.service.ts:13</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">projects/opentelemetry-interceptor-webpack/src/lib/services/exporter/zipkin/zipkin-exporter.service.ts:19</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>zipkinConfig</p>
+</div>
+                    </td>
+                </tr>
 
             </tbody>
         </table>
@@ -278,10 +291,16 @@ import { ExporterConfig } from &#x27;@opentelemetry/exporter-zipkin/build/src/ty
 import { OpenTelemetryConfig, OpenTelemetryInjectConfig } from &#x27;@jufab/opentelemetry-angular-interceptor&#x27;;
 import { OpenTelemetryWebpackInjectConfig, OpenTelemetryWebpackConfig } from &#x27;../../../configuration/opentelemetry-webpack-config&#x27;;
 
+/**
+ * ZipkinExporterService class
+ */
 @Injectable({
   providedIn: &#x27;root&#x27;
 })
 export class ZipkinExporterService implements IExporter {
+  /**
+   * zipkinConfig
+   */
   private zipkinConfig: ExporterConfig;
 
   /**
@@ -298,7 +317,7 @@ export class ZipkinExporterService implements IExporter {
   }
 
   /**
-   * Return for the moment a ConsoleSpanExporter
+   * Return a ZipkinExporter configured with zipkinConfig field
    * @return SpanExporter
    */
   getExporter(): SpanExporter {

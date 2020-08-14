@@ -6,10 +6,16 @@ import { ExporterConfig } from '@opentelemetry/exporter-zipkin/build/src/types';
 import { OpenTelemetryConfig, OpenTelemetryInjectConfig } from '@jufab/opentelemetry-angular-interceptor';
 import { OpenTelemetryWebpackInjectConfig, OpenTelemetryWebpackConfig } from '../../../configuration/opentelemetry-webpack-config';
 
+/**
+ * ZipkinExporterService class
+ */
 @Injectable({
   providedIn: 'root'
 })
 export class ZipkinExporterService implements IExporter {
+  /**
+   * zipkinConfig
+   */
   private zipkinConfig: ExporterConfig;
 
   /**
@@ -26,7 +32,7 @@ export class ZipkinExporterService implements IExporter {
   }
 
   /**
-   * Return for the moment a ConsoleSpanExporter
+   * Return a ZipkinExporter configured with zipkinConfig field
    * @return SpanExporter
    */
   getExporter(): SpanExporter {

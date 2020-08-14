@@ -52,9 +52,6 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                         </a>
                         <ul class="links collapse " ${ isNormalMode ? 'id="modules-links"' : 'id="xs-modules-links"' }>
                             <li class="link">
-                                <a href="modules/JaegerExporterModule.html" data-type="entity-link">JaegerExporterModule</a>
-                            </li>
-                            <li class="link">
                                 <a href="modules/OpentelemetryInterceptorWebpackModule.html" data-type="entity-link">OpentelemetryInterceptorWebpackModule</a>
                             </li>
                             <li class="link">
@@ -71,9 +68,6 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </div>
                             <ul class="links collapse " ${ isNormalMode ? 'id="injectables-links"' : 'id="xs-injectables-links"' }>
                                 <li class="link">
-                                    <a href="injectables/JaegerExporterService.html" data-type="entity-link">JaegerExporterService</a>
-                                </li>
-                                <li class="link">
                                     <a href="injectables/ZipkinExporterService.html" data-type="entity-link">ZipkinExporterService</a>
                                 </li>
                             </ul>
@@ -86,9 +80,6 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             <span class="icon ion-ios-arrow-down"></span>
                         </div>
                         <ul class="links collapse " ${ isNormalMode ? ' id="interfaces-links"' : 'id="xs-interfaces-links"' }>
-                            <li class="link">
-                                <a href="interfaces/JaegerCollectorConfig.html" data-type="entity-link">JaegerCollectorConfig</a>
-                            </li>
                             <li class="link">
                                 <a href="interfaces/OpenTelemetryWebpackConfig.html" data-type="entity-link">OpenTelemetryWebpackConfig</a>
                             </li>

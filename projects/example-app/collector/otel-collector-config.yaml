@@ -1,0 +1,21 @@
+receivers:
+  zipkin:
+exporters:
+  jaeger:
+    endpoint: jaeger:14250
+    insecure: true
+  zipkin/exporter:
+    endpoint: "http://zipkin:9412/api/v2/spans"
+processors:
+  batch:
+    send_batch_size: 1
+extensions:
+  zpages:
+    endpoint: "0.0.0.0:55679"
+service:
+  extensions : [zpages]
+  pipelines:
+    traces:
+      receivers: [zipkin]
+      processors: [batch]
+      exporters: [jaeger,zipkin/exporter]
