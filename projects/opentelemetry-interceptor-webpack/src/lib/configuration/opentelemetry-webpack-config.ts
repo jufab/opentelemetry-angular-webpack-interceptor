@@ -1,13 +1,4 @@
 import { InjectionToken } from '@angular/core';
-/**
- * Jaeger Collector configuration
- */
-export interface JaegerCollectorConfig {
-  /**
-   * Endpoint for the HTTPSender
-   */
-  endpoint?: string;
-}
 
 /**
  * Configuration for Zipkin
@@ -23,7 +14,6 @@ export interface ZipkinCollectorConfig {
  * OpenTelemetryWebpackConfig
  */
 export interface OpenTelemetryWebpackConfig {
-  jaegerConfig?: JaegerCollectorConfig;
   /** zipkinConfig */
   zipkinConfig?: ZipkinCollectorConfig;
 }

@@ -34,6 +34,102 @@
           }
         }
       }
-    }},
+    },
+    "example-app": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/example-app",
+      "sourceRoot": "projects/example-app/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-builders/custom-webpack:browser",
+          "options": {
+            "customWebpackConfig": {
+                "path": "projects/example-app/webpack.config.ts"
+            },
+            "outputPath": "dist/example-app",
+            "index": "projects/example-app/src/index.html",
+            "main": "projects/example-app/src/main.ts",
+            "polyfills": "projects/example-app/src/polyfills.ts",
+            "tsConfig": "projects/example-app/tsconfig.app.json",
+            "allowedCommonJsDependencies": ["@opentelemetry/exporter-jaeger","@opentelemetry/api","@opentelemetry/exporter-collector","@opentelemetry/tracing","@opentelemetry/web","@opentelemetry/core","@opentelemetry/context-base","@opentelemetry/propagator-jaeger"],
+            "aot": true,
+            "preserveSymlinks": true,
+            "assets": [
+              "projects/example-app/src/favicon.ico",
+              "projects/example-app/src/assets"
+            ],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
+              "projects/example-app/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/example-app/src/environments/environment.ts",
+                  "with": "projects/example-app/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-builders/custom-webpack:dev-server",
+          "options": {
+            "browserTarget": "example-app:build",
+            "proxyConfig": "projects/example-app/proxy.conf.json"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "example-app:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "example-app:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/example-app/tsconfig.app.json",
+              "projects/example-app/tsconfig.spec.json",
+              "projects/example-app/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
   "defaultProject": "opentelemetry-interceptor-webpack"
 }

@@ -2,8 +2,6 @@ import { NgModule, Optional, SkipSelf, ModuleWithProviders } from '@angular/core
 import { CommonModule } from '@angular/common';
 import { OpenTelemetryWebpackConfig, OpenTelemetryWebpackInjectConfig } from './configuration/opentelemetry-webpack-config';
 
-
-
 @NgModule({
   declarations: [],
   imports: [

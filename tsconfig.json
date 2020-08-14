@@ -12,6 +12,12 @@
     },
     {
       "path": "./projects/opentelemetry-interceptor-webpack/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/example-app/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/example-app/tsconfig.spec.json"
     }
 ]
 }
