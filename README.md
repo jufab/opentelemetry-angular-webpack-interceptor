@@ -37,9 +37,13 @@ More info : https://jufab.github.io/opentelemetry-angular-webpack-interceptor/
 
 With npm :
 
-```
+```bash
 npm install @jufab/opentelemetry-angular-webpack-interceptor @jufab/opentelemetry-angular-interceptor @opentelemetry/web @opentelemetry/exporter-collector @opentelemetry/exporter-zipkin
 ```
+
+And you need custom-webpack 
+
+_[More information about installation here](https://www.npmjs.com/package/@angular-builders/custom-webpack)_
 
 ### Configuration
 
