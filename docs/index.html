@@ -32,7 +32,8 @@
                    <div class="content-data">
 
 <h1 id="opentelemetry-angular-webpack-interceptor">OpenTelemetry Angular Webpack Interceptor</h1>
-<p>@jufab/opentelemetry-angular-webpack-interceptor is an Angular Library to deploy <a href="https://opentelemetry.io/">OpenTelemetry</a> with Zipkin or Jaeger Exporter and use custom webpack in your Angular application</p>
+<p><strong>Work In progress</strong></p>
+<p>@jufab/opentelemetry-angular-webpack-interceptor is an Angular Library to deploy <a href="https://opentelemetry.io/">OpenTelemetry</a> with Zipkin Exporter and use custom webpack in your Angular application</p>
 <p>This library uses <a href="https://github.com/open-telemetry/opentelemetry-js">opentelemetry-js package</a> and <a href="https://github.com/jufab/opentelemetry-angular-interceptor">@jufab/opentelemetry-angular-interceptor</a></p>
 <p><strong>Only works for Angular &gt;= 9.0.0</strong></p>
 <p>More info : <a href="https://jufab.github.io/opentelemetry-angular-webpack-interceptor/">https://jufab.github.io/opentelemetry-angular-webpack-interceptor/</a></p>
@@ -47,10 +48,7 @@
 <li><a href="#configuration">Configuration</a><ul>
 <li><a href="#example-global-configuration">Example global Configuration</a></li>
 <li><a href="#common-configuration">Common Configuration</a></li>
-<li><a href="#opentelemetry-collector-configuration">OpenTelemetry-collector Configuration</a></li>
 <li><a href="#zipkin-collector-configuration">Zipkin Collector Configuration</a></li>
-<li><a href="#jaeger-collector-configuration">Jaeger Collector Configuration</a></li>
-<li><a href="#jaeger-propagator-configuration">Jaeger Propagator Configuration</a></li>
 </ul>
 </li>
 <li><a href="#angular-module">Angular Module</a></li>
@@ -72,66 +70,42 @@
 <h2 id="getting-started">Getting started</h2>
 <h3 id="installation">Installation</h3>
 <p>With npm :</p>
-<div><pre class="line-numbers"><code class="language-none">npm install &#64;jufab/opentelemetry-angular-webpack-interceptor &#64;jufab/opentelemetry-angular-interceptor &#64;opentelemetry/web &#64;opentelemetry/exporter-collector &#64;opentelemetry/exporter-jaeger &#64;opentelemetry/exporter-zipkin</code></pre></div><h3 id="configuration">Configuration</h3>
+<div><pre class="line-numbers"><code class="language-bash">npm install &#64;jufab/opentelemetry-angular-webpack-interceptor &#64;jufab/opentelemetry-angular-interceptor &#64;opentelemetry/web &#64;opentelemetry/exporter-collector &#64;opentelemetry/exporter-zipkin</code></pre></div><p>And you need custom-webpack </p>
+<p><em><a href="https://www.npmjs.com/package/@angular-builders/custom-webpack">More information about installation here</a></em></p>
+<h3 id="configuration">Configuration</h3>
 <p>Use the &quot;OpenTelemetryWebpackConfig&quot; interface to configure this extra feature (use &quot;OpenTelemetryConfig&quot; for the common config)</p>
 <div><pre class="line-numbers"><code class="language-typescript">export interface OpenTelemetryWebpackConfig {
-  jaegerConfig?: JaegerCollectorConfig;
   zipkinConfig?: ZipkinCollectorConfig;
 }</code></pre></div><h4 id="example-global-configuration">Example global Configuration</h4>
 <p><em>From the example-app</em></p>
-<div><pre class="line-numbers"><code class="language-typescript">opentelemetryConfig: {
+<div><pre class="line-numbers"><code class="language-typescript">  openTelemetryConfig: {
     commonConfig: {
-      console: true, //(boolean) Display trace on console
-      production: false, //(boolean) Send trace with BatchSpanProcessor (true) or SimpleSpanProcessor (false) more info : https://github.com/open-telemetry/opentelemetry-js/tree/master/packages/opentelemetry-api#tracing
-      serviceName: &#39;example-app&#39;, //Service name send in trace
-      collector: Collector.otelcol, //Enum to specified the collector : OpenTelemetry Collector(otelcol), Zipkin (zipkin), Jaeger (jaeger)
-      propagator: Propagator.composite, // Enum to propagator : B3 (b3), HttpTraceContext (httpTrace), Jaeger Propagator (jaeger) and Composite that include b3, httpTrace and Jaeger (composite)
-      probabilitySampler: 0.7, //Samples a configurable percentage of traces, value between 0 to 1
+      console: true, // Display trace on console
+      production: false, // Send Trace with BatchSpanProcessor (true) or SimpleSpanProcessor (false)
+      serviceName: &#39;example-app&#39;, // Service name send in trace
+      probabilitySampler: 1 // Samples a configurable percentage of traces, value between 0 to 1
     },
-    otelcolConfig: {
-      url: &#39;http://localhost:55681/v1/trace&#39;, //URL of opentelemetry collector
-    },
+  },
+  openTelemetryWebpackConfig: {
     zipkinConfig: {
-      url: &#39;http://localhost:9411/api/v2/spans&#39;, //url of zipkin collector
+      url: &#39;http://localhost:9411/api/v2/spans&#39; // Default value: http://localhost:9411/api/v2/spans
     },
-    jaegerConfig: {
-      endpoint: &#39;http://localhost:14268/api/traces&#39;, // Url of Jaeger collector via HTTPSender
-    },
-    jaegerPropagatorConfig: {
-      customHeader: &#39;custom-header&#39;,
-    }
-  }
-</code></pre></div><h4 id="common-configuration">Common Configuration</h4>
+  },
+  ...</code></pre></div><h4 id="common-configuration">Common Configuration</h4>
 <ul>
 <li>console: (boolean) Display trace on console if true</li>
 <li>production: (boolean)Send trace via BatchSpanProcessor (Async) or SimpleSpanProcessor (Sync) : It&#39;s recommend to use BatchSpanProcessor on Production.</li>
 <li>serviceName: (string) Service name in your trace</li>
-<li>collector: (Enum) use Enum Collector (otelcol,zipkin,jaeger)</li>
-<li>propagator: (Enum) use Propagator Enum (b3,httpTrace,composite,jaeger)</li>
-</ul>
-<h4 id="opentelemetry-collector-configuration">OpenTelemetry-collector Configuration</h4>
-<ul>
-<li>url: (string) url of opentelemetry collector (default : <a href="http://localhost:55681/v1/trace">http://localhost:55681/v1/trace</a>)</li>
-<li>headers: list of custom header</li>
+<li>probabilitySampler: a value between 0 and 1 </li>
 </ul>
 <h4 id="zipkin-collector-configuration">Zipkin Collector Configuration</h4>
 <ul>
 <li>url: (string) url of zipkin collector (default : <a href="http://localhost:9411/api/v2/spans">http://localhost:9411/api/v2/spans</a>)</li>
 </ul>
-<h4 id="jaeger-collector-configuration">Jaeger Collector Configuration</h4>
-<ul>
-<li>endpoint: (string) url of jaeger collector (example : <a href="http://localhost:14268/api/traces">http://localhost:14268/api/traces</a>)</li>
-</ul>
-<h4 id="jaeger-propagator-configuration">Jaeger Propagator Configuration</h4>
-<ul>
-<li>customHeader: (string) custom header</li>
-</ul>
 <h3 id="angular-module">Angular Module</h3>
-<p>To insert OpenTelemetryInterceptorModule, you can add in your application module (generally app.module.ts)</p>
+<p>To insert OpentelemetryInterceptorWebpackModule, you can add in your application module (generally app.module.ts)</p>
 <div><pre class="line-numbers"><code class="language-typescript">import { NgModule } from &#39;&#64;angular/core&#39;;
 ...
-import { AppComponent } from &#39;./app.component&#39;;
-import { HttpClientModule } from &#39;&#64;angular/common/http&#39;;
 import { OpenTelemetryInterceptorModule } from &#39;&#64;jufab/opentelemetry-angular-interceptor&#39;;
 import { environment } from &#39;../environments/environment&#39;;
 ...
@@ -140,56 +114,41 @@ import { environment } from &#39;../environments/environment&#39;;
   declarations: [AppComponent, ...],
   imports: [
     ...
-    HttpClientModule,
-    //Insert module OpenTelemetryInterceptorModule with configuration, HttpClientModule is used for interceptor
-    OpenTelemetryInterceptorModule.forRoot(environment.opentelemetryConfig),
+    // Insert module OpenTelemetryInterceptorModule with configuration, HttpClientModule is used for interceptor
+    OpenTelemetryInterceptorModule.forRoot(environment.openTelemetryConfig),
+    // Extra configuration for OpentelemetryInterceptorWebpackModule
+    OpentelemetryInterceptorWebpackModule.forRoot(environment.openTelemetryWebpackConfig),
+    // Propagator (here, composite propagator)
+    CompositePropagatorModule,
+    // Zipkin exporter
+    ZipkinExporterModule,
     ...
   ],
-  providers: [],
-  bootstrap: [AppComponent],
+  ...
 })
 export class AppModule {}</code></pre></div><h2 id="how-it-works">How it works</h2>
 <h2 id="example">Example</h2>
 <p>This project have an &quot;example-app&quot; as Angular application example.</p>
 <p><a href="https://github.com/jufab/opentelemetry-angular-webpack-interceptor/tree/master/projects/example-app">projects/example-app</a></p>
 <p>You can see how configure and insert this module.</p>
-<p>You can althought test <strong>opentelemetry-angular-interceptor</strong> with this application.</p>
+<p>You can althought test <strong>opentelemetry-angular-webpack-interceptor</strong> with this application.</p>
 <h3 id="run">Run</h3>
 <p>To start this Example application, run command :</p>
-<div><pre class="line-numbers"><code class="language-none">npm run start:complete-example-app</code></pre></div><p>and open the application at <a href="http://localhost:4200">http://localhost:4200</a></p>
+<div><pre class="line-numbers"><code class="language-none">npm start</code></pre></div><p>and open the application at <a href="http://localhost:4200">http://localhost:4200</a></p>
 <h3 id="optional-result-in-opentelemtery-collector">[Optional] Result in OpenTelemtery-collector</h3>
 <p>If you want to see the result in a collector *, there&#39;s a docker-compose available in this project.</p>
 <p>You can start it with this command :</p>
-<div><pre class="line-numbers"><code class="language-none">docker-compose -f projects/example-app/collector/docker-compose.yaml up -d</code></pre></div><p>Go to the jaeger application (<a href="http://localhost:16686">http://localhost:16686</a>) to see result.</p>
+<div><pre class="line-numbers"><code class="language-none">docker-compose -f projects/example-app/collector/docker-compose.yaml up -d</code></pre></div><p>Go to the zipkin application (<a href="http://localhost:9412">http://localhost:9412</a>) to see result.</p>
 <p>More info about the collector here : <a href="https://github.com/open-telemetry/opentelemetry-collector">https://github.com/open-telemetry/opentelemetry-collector</a></p>
 <blockquote>
 <p><em>* without an Agent or a Collector you can see an error in your browser about sending a &quot;trace&quot;.</em></p>
 </blockquote>
 <h2 id="troubleshoot">Troubleshoot</h2>
 <h3 id="angular-10-warning">Angular 10 Warning</h3>
-<div><pre class="line-numbers"><code class="language-shell">WARNING in xxx/fesm2015/jufab-opentelemetry-angular-interceptor.js depends on &#39;&#64;opentelemetry/web&#39;. CommonJS or AMD dependencies can cause optimization bailouts.
-For more info see: https://angular.io/guide/build#configuring-commonjs-dependencies
-
-WARNING in xxx/fesm2015/jufab-opentelemetry-angular-interceptor.js depends on &#39;&#64;opentelemetry/core&#39;. CommonJS or AMD dependencies can cause optimization bailouts.
-For more info see: https://angular.io/guide/build#configuring-commonjs-dependencies
-
-WARNING in xxx/fesm2015/jufab-opentelemetry-angular-interceptor.js depends on &#39;&#64;opentelemetry/tracing&#39;. CommonJS or AMD dependencies can cause optimization bailouts.
-For more info see: https://angular.io/guide/build#configuring-commonjs-dependencies
-
-WARNING in xxx/fesm2015/jufab-opentelemetry-angular-interceptor.js depends on &#39;&#64;opentelemetry/api&#39;. CommonJS or AMD dependencies can cause optimization bailouts.
-For more info see: https://angular.io/guide/build#configuring-commonjs-dependencies
-
-WARNING in xxx/fesm2015/jufab-opentelemetry-angular-interceptor.js depends on &#39;&#64;opentelemetry/exporter-collector/build/src/platform/browser&#39;. CommonJS or AMD dependencies can cause optimization bailouts.
-For more info see: https://angular.io/guide/build#configuring-commonjs-dependencies</code></pre></div><p>Add to your angular.json</p>
+<div><pre class="line-numbers"><code class="language-shell">WARNING in /Users/julien/Documents/git/angular/opentelemetry-angular-interceptor-webpack/node_modules/&#64;opentelemetry/api/build/src/index.js depends on &#39;&#64;opentelemetry/context-base&#39;. CommonJS or AMD dependencies can cause optimization bailouts.</code></pre></div><p>Add to your angular.json</p>
 <div><pre class="line-numbers"><code class="language-json">&quot;options&quot;: {
   &quot;allowedCommonJsDependencies&quot;: [
-    &quot;&#64;opentelemetry/web&quot;,
-    &quot;&#64;opentelemetry/core&quot;,
-    &quot;&#64;opentelemetry/tracing&quot;,
-    &quot;&#64;opentelemetry/api&quot;,
-    &quot;&#64;opentelemetry/exporter-collector&quot;,
-    &quot;&#64;opentelemetry/context-base&quot;,
-    &quot;&#64;opentelemetry/propagator-jaeger&quot;
+    &quot;&#64;opentelemetry/context-base&quot;
   ],</code></pre></div>
 
 
