@@ -6,7 +6,6 @@
     "umdModuleIds": {
       "@jufab/opentelemetry-angular-interceptor/lib/configuration/opentelemetry-config": "@jufab/opentelemetry-config",
       "@jufab/opentelemetry-angular-interceptor": "@jufab/opentelemetry-angular-interceptor",
-      "@opentelemetry/exporter-jaeger": "@opentelemetry/exporter-jaeger",
       "@jufab/opentelemetry-angular-interceptor/lib/services/exporter/span-exporter.service": "@jufab/opentelemetry-exporter",
       "@opentelemetry/exporter-zipkin": "@opentelemetry/exporter-zipkin"
     }
