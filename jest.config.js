@@ -11,6 +11,7 @@ module.exports = {
   testPathIgnorePatterns: [
     '<rootDir>/node_modules/',
     '<rootDir>/dist/opentelemetry-interceptor-webpack/',
+    '<rootDir>/projects/example-app/',
   ],
   globals: {
     'ts-jest': {
