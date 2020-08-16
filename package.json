@@ -8,10 +8,20 @@
     "build:prod": "ng build opentelemetry-interceptor-webpack --prod && cp README.md dist/opentelemetry-interceptor-webpack/README.md",
     "test": "jest --coverage",
     "lint": "ng lint",
+    "release": "standard-version",
     "e2e": "ng e2e",
     "compodoc": "npx compodoc -t -p projects/opentelemetry-interceptor-webpack/tsconfig.lib.json --theme material -d ./docs -n \"OpenTelemetry Angular Webpack Interceptor\""
   },
   "private": true,
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "standard-version": {
+    "bumpFiles": [
+      "./projects/opentelemetry-interceptor/package.json",
+      "package.json"
+    ]
+  },
   "dependencies": {
     "@angular/animations": "~10.0.6",
     "@angular/cdk": "^10.1.3",
@@ -23,7 +33,7 @@
     "@angular/platform-browser": "~10.0.6",
     "@angular/platform-browser-dynamic": "~10.0.6",
     "@angular/router": "~10.0.6",
-    "@jufab/opentelemetry-angular-interceptor": "^0.10.2",
+    "@jufab/opentelemetry-angular-interceptor": "^0.10.2-1",
     "@opentelemetry/exporter-collector": "^0.10.2",
     "@opentelemetry/exporter-zipkin": "^0.10.2",
     "@opentelemetry/propagator-jaeger": "^0.9.0",
