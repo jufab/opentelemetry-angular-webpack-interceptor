@@ -1,6 +1,6 @@
 {
   "name": "opentelemetry-angular-interceptor-webpack",
-  "version": "0.10.2",
+  "version": "0.10.2-1",
   "scripts": {
     "ng": "ng",
     "start": "concurrently -k -p \"[{name}]\" -n \"backend,example-app\" -c \"green.bold,cyan.bold\" \"node ./projects/example-app/src/backend-api.js\" \"ng serve\"",
@@ -18,7 +18,7 @@
   },
   "standard-version": {
     "bumpFiles": [
-      "./projects/opentelemetry-interceptor/package.json",
+      "./projects/opentelemetry-interceptor-webpack/package.json",
       "package.json"
     ]
   },
