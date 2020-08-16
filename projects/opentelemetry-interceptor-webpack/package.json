@@ -1,10 +1,17 @@
 {
   "name": "@jufab/opentelemetry-angular-webpack-interceptor",
   "version": "0.10.2-1",
+  "keywords": [
+    "opentelemetry",
+    "tracing",
+    "angular",
+    "webpack"
+  ],
   "peerDependencies": {
     "@angular/common": ">=9.0.0",
     "@angular/core": ">=9.0.0",
-    "@jufab/opentelemetry-angular-interceptor": "^0.10.x"
+    "@jufab/opentelemetry-angular-interceptor": "^0.10.x",
+    "@opentelemetry/exporter-zipkin": "^0.10.x"
   },
   "dependencies": {
     "tslib": "^2.0.0"
