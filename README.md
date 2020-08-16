@@ -11,7 +11,7 @@ This library uses [opentelemetry-js package](https://github.com/open-telemetry/o
 More info : https://jufab.github.io/opentelemetry-angular-webpack-interceptor/
 
 [![npm version](https://badge.fury.io/js/%40jufab%2Fopentelemetry-angular-interceptor.svg)](https://badge.fury.io/js/%40jufab%2Fopentelemetry-angular-interceptor)
-[![codecov](https://codecov.io/gh/jufab/opentelemetry-angular-interceptor/branch/master/graph/badge.svg)](https://codecov.io/gh/jufab/opentelemetry-angular-interceptor)
+[![codecov](https://codecov.io/gh/jufab/opentelemetry-angular-webpack-interceptor/branch/master/graph/badge.svg)](https://codecov.io/gh/jufab/opentelemetry-angular-webpack-interceptor)
 
 ## Table of contents
 
