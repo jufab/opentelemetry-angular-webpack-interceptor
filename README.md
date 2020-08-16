@@ -1,7 +1,5 @@
 # OpenTelemetry Angular Webpack Interceptor
 
-**Work In progress**
-
 @jufab/opentelemetry-angular-webpack-interceptor is an Angular Library to deploy [OpenTelemetry](https://opentelemetry.io/) with Zipkin Exporter and use custom webpack in your Angular application
 
 This library uses [opentelemetry-js package](https://github.com/open-telemetry/opentelemetry-js) and [@jufab/opentelemetry-angular-interceptor](https://github.com/jufab/opentelemetry-angular-interceptor)
@@ -10,7 +8,7 @@ This library uses [opentelemetry-js package](https://github.com/open-telemetry/o
 
 More info : https://jufab.github.io/opentelemetry-angular-webpack-interceptor/
 
-[![npm version](https://badge.fury.io/js/%40jufab%2Fopentelemetry-angular-interceptor.svg)](https://badge.fury.io/js/%40jufab%2Fopentelemetry-angular-interceptor)
+[![npm version](https://badge.fury.io/js/%40jufab%2Fopentelemetry-angular-webpack-interceptor.svg)](https://badge.fury.io/js/%40jufab%2Fopentelemetry-angular-webpack-interceptor)
 [![codecov](https://codecov.io/gh/jufab/opentelemetry-angular-webpack-interceptor/branch/master/graph/badge.svg)](https://codecov.io/gh/jufab/opentelemetry-angular-webpack-interceptor)
 
 ## Table of contents
