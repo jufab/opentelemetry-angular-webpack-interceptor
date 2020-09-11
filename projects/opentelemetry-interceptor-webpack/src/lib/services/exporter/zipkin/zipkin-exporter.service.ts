@@ -28,6 +28,7 @@ export class ZipkinExporterService implements IExporter {
     this.zipkinConfig = {
       serviceName: config.commonConfig.serviceName,
       url: configWebpack.zipkinConfig?.url,
+      headers: configWebpack.zipkinConfig.headers
     };
   }
 

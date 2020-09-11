@@ -63,7 +63,7 @@ _From the example-app_
       console: true, // Display trace on console
       production: false, // Send Trace with BatchSpanProcessor (true) or SimpleSpanProcessor (false)
       serviceName: 'example-app', // Service name send in trace
-      probabilitySampler: 1 // Samples a configurable percentage of traces, value between 0 to 1
+      probabilitySampler: '0.7', // Samples a configurable percentage of traces, string value between '0' to '1'
     },
   },
   openTelemetryWebpackConfig: {
