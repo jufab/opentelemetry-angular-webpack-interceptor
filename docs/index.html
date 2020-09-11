@@ -32,12 +32,11 @@
                    <div class="content-data">
 
 <h1 id="opentelemetry-angular-webpack-interceptor">OpenTelemetry Angular Webpack Interceptor</h1>
-<p><strong>Work In progress</strong></p>
 <p>@jufab/opentelemetry-angular-webpack-interceptor is an Angular Library to deploy <a href="https://opentelemetry.io/">OpenTelemetry</a> with Zipkin Exporter and use custom webpack in your Angular application</p>
 <p>This library uses <a href="https://github.com/open-telemetry/opentelemetry-js">opentelemetry-js package</a> and <a href="https://github.com/jufab/opentelemetry-angular-interceptor">@jufab/opentelemetry-angular-interceptor</a></p>
 <p><strong>Only works for Angular &gt;= 9.0.0</strong></p>
 <p>More info : <a href="https://jufab.github.io/opentelemetry-angular-webpack-interceptor/">https://jufab.github.io/opentelemetry-angular-webpack-interceptor/</a></p>
-<p><a href="https://badge.fury.io/js/%40jufab%2Fopentelemetry-angular-interceptor"><img src="https://badge.fury.io/js/%40jufab%2Fopentelemetry-angular-interceptor.svg" alt="npm version" class="img-responsive"></a>
+<p><a href="https://badge.fury.io/js/%40jufab%2Fopentelemetry-angular-webpack-interceptor"><img src="https://badge.fury.io/js/%40jufab%2Fopentelemetry-angular-webpack-interceptor.svg" alt="npm version" class="img-responsive"></a>
 <a href="https://codecov.io/gh/jufab/opentelemetry-angular-webpack-interceptor"><img src="https://codecov.io/gh/jufab/opentelemetry-angular-webpack-interceptor/branch/master/graph/badge.svg" alt="codecov" class="img-responsive"></a></p>
 <h2 id="table-of-contents">Table of contents</h2>
 <ul>
@@ -83,7 +82,7 @@
       console: true, // Display trace on console
       production: false, // Send Trace with BatchSpanProcessor (true) or SimpleSpanProcessor (false)
       serviceName: &#39;example-app&#39;, // Service name send in trace
-      probabilitySampler: 1 // Samples a configurable percentage of traces, value between 0 to 1
+      probabilitySampler: &#39;0.7&#39;, // Samples a configurable percentage of traces, string value between &#39;0&#39; to &#39;1&#39;
     },
   },
   openTelemetryWebpackConfig: {

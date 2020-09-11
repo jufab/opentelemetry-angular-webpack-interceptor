@@ -212,8 +212,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="38"
-                            class="link-to-prism">projects/opentelemetry-interceptor-webpack/src/lib/services/exporter/zipkin/zipkin-exporter.service.ts:38</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="39"
+                            class="link-to-prism">projects/opentelemetry-interceptor-webpack/src/lib/services/exporter/zipkin/zipkin-exporter.service.ts:39</a></div>
                 </td>
             </tr>
 
@@ -313,6 +313,7 @@ export class ZipkinExporterService implements IExporter {
     this.zipkinConfig &#x3D; {
       serviceName: config.commonConfig.serviceName,
       url: configWebpack.zipkinConfig?.url,
+      headers: configWebpack.zipkinConfig.headers
     };
   }
 
