@@ -1,6 +1,6 @@
 {
   "name": "@jufab/opentelemetry-angular-webpack-interceptor",
-  "version": "0.10.2-1",
+  "version": "0.11.0",
   "keywords": [
     "opentelemetry",
     "tracing",
